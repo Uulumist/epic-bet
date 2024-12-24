@@ -1,6 +1,6 @@
-import { Locator, Page } from "@playwright/test";
+import { Locator, Page } from '@playwright/test';
 
-const mainPageUrl = "https://epicbet.com/en/";
+const mainPageUrl = 'https://epicbet.com/en/';
 
 export class MainPage {
   readonly url = mainPageUrl;
@@ -31,31 +31,31 @@ export class MainPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.allowCookies = page.getByRole("button", { name: "Allow all" });
-    this.header = page.getByTestId("header");
-    this.logo = page.locator("._1hmm2mz5");
-    this.sportsButton = page.getByTestId("sport-button");
-    this.casinoButton = page.getByTestId("casino-button");
-    this.liveCasinoButton = page.getByTestId("live-casino-button");
-    this.roadmapButton = page.getByTestId("roadmap-button");
-    this.promotionsButton = page.getByRole("link", { name: "Promotions" });
-    this.languageButton = page.getByTestId("language-button");
-    this.loginButton = page.getByTestId("login-button");
-    this.signupButton = page.getByTestId("signup-button");
-    this.menuButton = page.getByTestId("menu-button");
-    this.searchButton = page.getByTestId("search-button");
-    this.searchContainer = page.getByTestId("search-container");
-    this.searchContainerCasinoButton = page.getByRole("button", {
-      name: "Casino",
+    this.allowCookies = page.getByRole('button', { name: 'Allow all' });
+    this.header = page.getByTestId('header');
+    this.logo = page.locator('._1hmm2mz5');
+    this.sportsButton = page.getByTestId('sport-button');
+    this.casinoButton = page.getByTestId('casino-button');
+    this.liveCasinoButton = page.getByTestId('live-casino-button');
+    this.roadmapButton = page.getByTestId('roadmap-button');
+    this.promotionsButton = page.getByRole('link', { name: 'Promotions' });
+    this.languageButton = page.getByTestId('language-button');
+    this.loginButton = page.getByTestId('login-button');
+    this.signupButton = page.getByTestId('signup-button');
+    this.menuButton = page.getByTestId('menu-button');
+    this.searchButton = page.getByTestId('search-button');
+    this.searchContainer = page.getByTestId('search-container');
+    this.searchContainerCasinoButton = page.getByRole('button', {
+      name: 'Casino',
     });
-    this.searchContainerSearchInput = page.getByTestId("search-input");
-    this.searchContainerSearchResults = page.getByTestId("casino-game-card");
-    this.authPopUp = page.getByTestId("auth-modal");
-    this.authEmailButton = page.getByTestId("email-option-button");
-    this.authEmailInput = page.getByTestId("email-input");
-    this.authPasswordInput = page.getByTestId("password-input");
-    this.authLoginButton = page.getByTestId("auth-login-button");
-    this.authAlert = page.getByTestId("auth-alert");
+    this.searchContainerSearchInput = page.getByTestId('search-input');
+    this.searchContainerSearchResults = page.getByTestId('casino-game-card');
+    this.authPopUp = page.getByTestId('auth-modal');
+    this.authEmailButton = page.getByTestId('email-option-button');
+    this.authEmailInput = page.getByTestId('email-input');
+    this.authPasswordInput = page.getByTestId('password-input');
+    this.authLoginButton = page.getByTestId('auth-login-button');
+    this.authAlert = page.getByTestId('auth-alert');
   }
 
   async openMainPage() {

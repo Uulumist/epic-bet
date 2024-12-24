@@ -1,11 +1,11 @@
-import { test, expect } from "@playwright/test";
-import { MainPage } from "./pages/main-page";
-import { faker } from "@faker-js/faker/locale/en";
+import { test, expect } from '@playwright/test';
+import { MainPage } from './pages/main-page';
+import { faker } from '@faker-js/faker/locale/en';
 
-const searchTerm = "Roulette";
+const searchTerm = 'Roulette';
 const fakeEmail = faker.internet.email();
 const fakePassword = faker.internet.password();
-const routeToMock = "**/auth/public/self-service/login**";
+const routeToMock = '**/auth/public/self-service/login**';
 
 let mainPage: MainPage;
 
@@ -14,8 +14,8 @@ test.beforeEach(async ({ page }) => {
   await mainPage.openMainPage();
 });
 
-test.describe("EpicBet main page tests", () => {
-  test("Header and elements on it are visible on main page", async () => {
+test.describe('EpicBet main page tests', () => {
+  test('Header and elements on it are visible on main page', async () => {
     await expect.soft(mainPage.header).toBeVisible();
     await expect.soft(mainPage.logo).toBeVisible();
     await expect.soft(mainPage.sportsButton).toBeVisible();
@@ -29,7 +29,7 @@ test.describe("EpicBet main page tests", () => {
     await expect.soft(mainPage.menuButton).toBeVisible();
   });
 
-  test("Verify that search returns at least 1 result", async () => {
+  test('Verify that search returns at least 1 result', async () => {
     const searchBar = mainPage.searchButton;
     await searchBar.click();
     expect.soft(mainPage.searchContainer).toBeVisible();
@@ -40,7 +40,7 @@ test.describe("EpicBet main page tests", () => {
     expect.soft(resultCount).toBeGreaterThan(0);
   });
 
-  test("Verify that login with invalid credentials will show alert", async () => {
+  test('Verify that login with invalid credentials will show alert', async () => {
     await mainPage.loginButton.click();
     await expect.soft(mainPage.authPopUp).toBeVisible();
     await mainPage.authEmailButton.click();
@@ -50,16 +50,16 @@ test.describe("EpicBet main page tests", () => {
     await expect.soft(mainPage.authAlert).toBeVisible();
   });
 
-  test("Verify that login with valid credentials will return jwt", async ({
+  test('Verify that login with valid credentials will return jwt', async ({
     page,
   }) => {
     await page.route(routeToMock, async (route) => {
       await route.fulfill({
         status: 200,
-        contentType: "application/json",
+        contentType: 'application/json',
         body: JSON.stringify({
           success: true,
-          token: "mocked-jwt-token",
+          token: 'mocked-jwt-token',
         }),
       });
     });
@@ -72,6 +72,6 @@ test.describe("EpicBet main page tests", () => {
     const response = await page.waitForResponse(routeToMock);
     const responseBody = await response.json();
     expect.soft(responseBody.success).toBe(true);
-    expect.soft(responseBody.token).toBe("mocked-jwt-token");
+    expect.soft(responseBody.token).toBe('mocked-jwt-token');
   });
 });
