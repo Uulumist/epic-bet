@@ -1,0 +1,23 @@
+{
+  "name": "epic-bet",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "format": "prettier --write \"tests/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "check": "prettier --check \"tests/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "lint": "eslint \"tests/**/*.{ts,tsx,js,jsx}\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.2",
+    "prettier": "^3.4.2"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.3.0"
+  }
+}
