@@ -36,6 +36,7 @@ test.describe('EpicBet main page tests', () => {
     await mainPage.searchContainerCasinoButton.click();
     await mainPage.searchContainerSearchInput.fill(searchTerm);
     const searchResults = mainPage.searchContainerSearchResults;
+    await searchResults.first().waitFor({ state: 'visible', timeout: 5000 });
     const resultCount = await searchResults.count();
     expect.soft(resultCount).toBeGreaterThan(0);
   });
