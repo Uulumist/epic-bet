@@ -29,16 +29,19 @@ test.describe('EpicBet main page tests', () => {
     await expect.soft(mainPage.menuButton).toBeVisible();
   });
 
-  test('Verify that search returns at least 1 result', async () => {
+  test('Verify that actual search results equal text search results', async () => {
     const searchBar = mainPage.searchButton;
     await searchBar.click();
     expect.soft(mainPage.searchContainer).toBeVisible();
     await mainPage.searchContainerCasinoButton.click();
     await mainPage.searchContainerSearchInput.fill(searchTerm);
     const searchResults = mainPage.searchContainerSearchResults;
-    await searchResults.first().waitFor({ state: 'visible', timeout: 5000 });
+    await searchResults.first().waitFor({ state: 'visible', timeout: 20000 });
     const resultCount = await searchResults.count();
-    expect.soft(resultCount).toBeGreaterThan(0);
+    await mainPage.searchContainerSearchResultsCount.waitFor({ state: 'visible', timeout: 20000 });
+    const displayedCountText = await mainPage.searchContainerSearchResultsCount.innerText();
+    const displayedCount = parseInt(displayedCountText.match(/\d+/)?.[0] || '0', 10);
+    expect(resultCount).toBe(displayedCount);
   });
 
   test('Verify that login with invalid credentials will show alert', async () => {

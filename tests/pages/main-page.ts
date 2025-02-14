@@ -22,6 +22,7 @@ export class MainPage {
   readonly searchContainerCasinoButton: Locator;
   readonly searchContainerSearchInput: Locator;
   readonly searchContainerSearchResults: Locator;
+  readonly searchContainerSearchResultsCount: Locator;
   readonly authPopUp: Locator;
   readonly authEmailButton: Locator;
   readonly authEmailInput: Locator;
@@ -50,6 +51,7 @@ export class MainPage {
     });
     this.searchContainerSearchInput = page.getByTestId('search-input');
     this.searchContainerSearchResults = page.getByTestId('casino-game-card');
+    this.searchContainerSearchResultsCount = page.locator('div._9l6sxx2');
     this.authPopUp = page.getByTestId('auth-modal');
     this.authEmailButton = page.getByTestId('email-option-button');
     this.authEmailInput = page.getByTestId('email-input');
