@@ -38,9 +38,18 @@ test.describe('EpicBet main page tests', () => {
     const searchResults = mainPage.searchContainerSearchResults;
     await searchResults.first().waitFor({ state: 'visible', timeout: 20000 });
     const resultCount = await searchResults.count();
-    await mainPage.searchContainerSearchResultsCount.waitFor({ state: 'visible', timeout: 20000 });
-    const displayedCountText = await mainPage.searchContainerSearchResultsCount.innerText();
-    const displayedCount = parseInt(displayedCountText.match(/\d+/)?.[0] || '0', 10);
+    console.log(resultCount);
+    await mainPage.searchContainerSearchResultsCount.waitFor({
+      state: 'visible',
+      timeout: 20000,
+    });
+    const displayedCountText =
+      await mainPage.searchContainerSearchResultsCount.innerText();
+    const displayedCount = parseInt(
+      displayedCountText.match(/\d+/)?.[0] || '0',
+      10,
+    );
+    console.log(displayedCount);
     expect(resultCount).toBe(displayedCount);
   });
 
